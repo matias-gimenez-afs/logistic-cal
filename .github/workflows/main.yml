@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular project
-        run: npm run build -- --configuration production --base-href /NOMBRE-DEL-REPO/
+        run: npm run build -- --configuration production --base-href /logistic-cal/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
