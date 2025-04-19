@@ -28,4 +28,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages         # rama donde se deploya
-          folder: dist/NOMBRE-DEL-PROYECTO  # carpeta generada por Angular
+          folder: dist/demo  # carpeta generada por Angular
