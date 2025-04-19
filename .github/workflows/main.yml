@@ -29,3 +29,4 @@ jobs:
         with:
           branch: gh-pages         # rama donde se deploya
           folder: dist/demo  # carpeta generada por Angular
+          token: ${{ secrets.GITHUB_TOKEN }}
