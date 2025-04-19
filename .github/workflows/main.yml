@@ -24,9 +24,14 @@ jobs:
       - name: Build Angular project
         run: npm run build -- --configuration production --base-href /logistic-cal/
 
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages         # rama donde se deploya
-          folder: dist/demo  # carpeta generada por Angular
+          branch: gh-pages
+          folder: dist/demo
           token: ${{ secrets.GITHUB_TOKEN }}
