@@ -1,0 +1,187 @@
+@import 'src/styles/colors.scss';
+
+/* Contenedor principal */
+.dv-section-container {
+  padding: 2rem 0;
+  color: white;
+  animation: fadeIn 0.5s ease-in-out;
+  background: transparent;
+}
+
+/* Contenedor común para filtros y tabla */
+.content-wrapper {
+  width: calc(100% - 3rem);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Títulos */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+/* Filtros */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.filters mat-form-field {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+/* Tabla */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.full-width-table {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Celdas */
+th.mat-header-cell,
+td.mat-cell {
+  color: white;
+  font-size: 0.95rem;
+  padding: 1rem;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Alternancia y hover */
+tr.mat-row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+tr.mat-row:hover {
+  background-color: rgba(2, 119, 189, 0.15) !important;
+}
+
+/* Checkbox */
+mat-checkbox {
+  margin-left: 0.5rem;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Inputs y Selects claros sobre fondo oscuro */
+::ng-deep .mat-form-field-label,
+::ng-deep .mat-select-value,
+::ng-deep .mat-input-element {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Outline select */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Botones */
+.action-button {
+  background: rgba(2, 119, 189, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  background: rgba(2, 119, 189, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .filters {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fondo del panel desplegable de TODOS los mat-select */
+::ng-deep .mat-select-panel {
+  background-color: rgba(30, 30, 30, 0.95) !important;
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+/* Opciones dentro del panel */
+::ng-deep .mat-option {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* Hover sobre las opciones */
+::ng-deep .mat-option:hover:not(.mat-option-disabled) {
+  background-color: rgba(2, 119, 189, 0.3) !important;
+}
+
+td {
+  vertical-align: middle;
+}
+
+td mat-form-field {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}

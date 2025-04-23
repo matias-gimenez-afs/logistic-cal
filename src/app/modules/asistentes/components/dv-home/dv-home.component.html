@@ -1,0 +1,29 @@
+<div class="dv-home-container">
+  <div class="hero-section">
+    <h1 class="hero-title">Gestión DV</h1>
+    <p class="hero-subtitle">
+      Panel de control para seguimiento y confirmación de participantes
+    </p>
+  </div>
+
+  <div class="cards-grid">
+    <mat-card
+      *ngFor="let card of cards"
+      [class]="'mat-elevation-z4 card ' + card.color + '-card'"
+      [routerLink]="card.route"
+    >
+      <div class="card-content">
+        <img
+          [src]="'assets/icons/' + card.icon + '.png'"
+          class="card-icon"
+          [alt]="card.title"
+        />
+        <h2 class="card-title">{{ card.title }}</h2>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="child-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

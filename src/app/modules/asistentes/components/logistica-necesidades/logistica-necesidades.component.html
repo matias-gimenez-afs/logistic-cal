@@ -1,0 +1,72 @@
+<div class="necesidades-section-container">
+  <h2 class="section-title">Necesidades Especiales</h2>
+  <p class="section-subtitle">
+    Información sobre alimentación y medicación relevante para la logística
+  </p>
+
+  <div class="filters-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar por EV</mat-label>
+      <input matInput [(ngModel)]="filtroEv" placeholder="Ej: Mendoza" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Restricciones alimentarias</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filtroRestricciones"
+        placeholder="Ej: Vegetariano"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Condiciones médicas</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filtroCondiciones"
+        placeholder="Ej: Diabetes"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="participantesFiltrados"
+      class="full-width-table"
+    >
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let p">{{ p.nombre }}</td>
+      </ng-container>
+
+      <!-- Apellido Column -->
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef>Apellido</th>
+        <td mat-cell *matCellDef="let p">{{ p.apellido }}</td>
+      </ng-container>
+
+      <!-- EV Column -->
+      <ng-container matColumnDef="ev">
+        <th mat-header-cell *matHeaderCellDef>EV</th>
+        <td mat-cell *matCellDef="let p">{{ p.ev }}</td>
+      </ng-container>
+
+      <!-- Restricciones Column -->
+      <ng-container matColumnDef="restricciones">
+        <th mat-header-cell *matHeaderCellDef>Restricciones alimentarias</th>
+        <td mat-cell *matCellDef="let p">{{ p.restriccionesAlimentarias }}</td>
+      </ng-container>
+
+      <!-- Condiciones Column -->
+      <ng-container matColumnDef="condiciones">
+        <th mat-header-cell *matHeaderCellDef>Condiciones médicas</th>
+        <td mat-cell *matCellDef="let p">{{ p.condicionesMedicas }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

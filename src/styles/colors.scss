@@ -1,0 +1,17 @@
+// Colores principales
+$primary-blue: #0a2463;
+$secondary-blue: #3e92cc;
+$accent-orange: #ff8200;
+
+// Variables para Angular Material
+:root {
+  --primary-blue: #{$primary-blue};
+  --secondary-blue: #{$secondary-blue};
+  --accent-orange: #{$accent-orange};
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+

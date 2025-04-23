@@ -1,0 +1,92 @@
+<div class="dv-section-container">
+<h2 class="section-title">Mentor y confirmación</h2>
+<p class="section-subtitle">Gestioná los datos del mentor y la confirmación de cada participante</p>
+
+<div class="filters">
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Filtrar por EV</mat-label>
+    <input matInput [formControl]="evFilter" placeholder="Ej. EV01">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Filtrar por mentor</mat-label>
+    <mat-select [formControl]="mentorFilter">
+      <mat-option value="">Todos los mentores</mat-option>
+      <mat-option *ngFor="let mentor of mentoresDisponibles" [value]="mentor">
+        {{ mentor }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Estado de confirmación</mat-label>
+    <mat-select [formControl]="estadoFilter">
+      <mat-option value="">Todos</mat-option>
+      <mat-option value="confirmado">Confirmado</mat-option>
+      <mat-option value="no-confirmado">No confirmado</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="table-container">
+  <table mat-table [dataSource]="filteredParticipantes" class="full-width-table mat-elevation-z8">
+
+    <!-- EV -->
+    <ng-container matColumnDef="ev">
+      <th mat-header-cell *matHeaderCellDef>EV</th>
+      <td mat-cell *matCellDef="let element">{{ element.ev }}</td>
+    </ng-container>
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <!-- Apellido -->
+    <ng-container matColumnDef="apellido">
+      <th mat-header-cell *matHeaderCellDef>Apellido</th>
+      <td mat-cell *matCellDef="let element">{{ element.apellido }}</td>
+    </ng-container>
+
+<!-- Mentor -->
+    <ng-container matColumnDef="mentor">
+    <th mat-header-cell *matHeaderCellDef>Mentor</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field class="mentor-cell no-border" appearance="outline">
+        <mat-select [(value)]="element.mentor">
+          <mat-option *ngFor="let mentor of mentoresDisponibles" [value]="mentor">
+            {{ mentor }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    </ng-container>
+
+    <!-- Notas del mentor -->
+    <ng-container matColumnDef="notasMentor">
+      <th mat-header-cell *matHeaderCellDef>Notas del mentor</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field appearance="outline" class="table-input-field">
+          <input matInput [(ngModel)]="element.notasMentor" placeholder="Notas">
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <!-- Confirmación -->
+    <ng-container matColumnDef="confirmado">
+      <th mat-header-cell *matHeaderCellDef>Confirmado</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox
+          [checked]="element.confirmado"
+          (change)="actualizarConfirmacion(element, $event.checked)"
+          class="table-checkbox">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+</div>

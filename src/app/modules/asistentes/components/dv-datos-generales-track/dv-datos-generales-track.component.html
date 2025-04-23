@@ -1,0 +1,107 @@
+<div class="dv-section-container">
+  <h2 class="section-title">Datos generales y seguimiento</h2>
+  <p class="section-subtitle">
+    Acá podés ver la información de mentoría, certificaciones y confirmar la
+    inscripción.
+  </p>
+
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Grupo EV</mat-label>
+      <mat-select [(ngModel)]="filtroEV">
+        <mat-option value="">Todos</mat-option>
+        <mat-option *ngFor="let ev of evsUnicos" [value]="ev">{{
+          ev
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rol</mat-label>
+      <mat-select [(ngModel)]="filtroRol">
+        <mat-option value="">Todos</mat-option>
+        <mat-option *ngFor="let rol of rolesUnicos" [value]="rol">{{
+          rol
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Track</mat-label>
+      <mat-select [(ngModel)]="filtroTrack">
+        <mat-option value="">Todos</mat-option>
+        <mat-option *ngFor="let t of tracksUnicos" [value]="t">{{
+          t
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="dataFiltrada"
+      class="mat-elevation-z8 full-width-table"
+    >
+      <!-- EV -->
+      <ng-container matColumnDef="ev">
+        <th mat-header-cell *matHeaderCellDef>EV</th>
+        <td mat-cell *matCellDef="let row">{{ row.ev }}</td>
+      </ng-container>
+
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
+      </ng-container>
+
+      <!-- Apellido -->
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef>Apellido</th>
+        <td mat-cell *matCellDef="let row">{{ row.apellido }}</td>
+      </ng-container>
+
+      <!-- Rol -->
+      <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef>Rol</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-select [(ngModel)]="row.rol" (selectionChange)="guardar(row)">
+            <mat-option *ngFor="let rol of rolesDisponibles" [value]="rol">{{
+              rol
+            }}</mat-option>
+          </mat-select>
+        </td>
+      </ng-container>
+
+      <!-- TRACK -->
+      <ng-container matColumnDef="track">
+        <th mat-header-cell *matHeaderCellDef>TRACK</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-select [(ngModel)]="row.track" (selectionChange)="guardar(row)">
+            <mat-option *ngFor="let t of tracksDisponibles" [value]="t">{{
+              t
+            }}</mat-option>
+          </mat-select>
+        </td>
+      </ng-container>
+
+      <!-- Subtrack -->
+      <ng-container matColumnDef="subtrack">
+        <th mat-header-cell *matHeaderCellDef>Subtrack</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-select
+            [(ngModel)]="row.subtrack"
+            (selectionChange)="guardar(row)"
+          >
+            <mat-option *ngFor="let s of subtracksDisponibles" [value]="s">{{
+              s
+            }}</mat-option>
+          </mat-select>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    </table>
+  </div>
+</div>
